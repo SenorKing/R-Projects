@@ -1,0 +1,64 @@
+view(diamonds)
+mutate(diamonds,carat_2=carat*100)
+as_tibble(diamonds)
+
+data("mtcars")
+view(mtcars)
+head(mtcars)
+read_csv(readr_example("mtcars.csv"))
+
+data("ToothGrowth")
+install.packages("tidyverse")
+library(tidyverse)
+install.packages("skimr")
+install.packages("here")
+library(skimr)
+library(here)
+
+install.packages("janitor")
+library(janitor)
+
+install.packages("dplyr")
+library(dplyr)
+
+## Install the Palmer penguins package
+
+install.packages("palmerpenguins")
+library(palmerpenguins)
+
+## View the Penguin data
+
+glimpse(penguins)
+View(penguins)
+
+penguins %>% 
+  select(species)
+
+penguins %>%
+  rename(island_new=island)
+
+clean_names(penguins)
+
+# Organize Data
+
+## Arrange bill length in desending order
+penguins2 <- penguins %>% arrange(-bill_length_mm)
+View(penguins2)
+
+## Organize by mean bill length by island
+penguins %>% group_by(island) %>% drop_na() %>%
+  summarize(mean_bill_length_mm = mean(bill_length_mm))
+
+## Organize by max bill length by island
+penguins %>% group_by(island) %>% drop_na() %>%
+  summarize(max_bill_length_mm = max(bill_length_mm))
+
+## Combine both code
+penguins %>% group_by(species, island) %>% drop_na() %>%
+  summarize(max_bl = max(bill_length_mm), mean_bl = mean(bill_length_mm))
+
+## Filter Penguins by species
+penguins %>% filter(species == "Adelie")
+
+## Mutate 
+penguins %>% mutate(body_mass_kg = body_mass_g/1000)
