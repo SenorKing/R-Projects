@@ -1,0 +1,48 @@
+## Install and Load all the Packages
+install.packages("tidyverse")
+install.packages("skimr")
+install.packages("janitor")
+
+library(tidyverse)
+library(skimr)
+library(janitor)
+library(readr)
+
+## Import Data
+bookings_df <- read_csv("hotel_bookings.csv")
+head(bookings_df)
+str(bookings_df)
+colnames(bookings_df)
+skim_without_charts(bookings_df)
+View(bookings_df)
+
+## Cleaning data
+trimmed_df <- bookings_df %>% 
+  select(hotel, is_canceled, lead_time)
+head(trimmed_df)
+View(trimmed_df)
+
+trimmed_df <- bookings_df %>% 
+  select(hotel, is_canceled, lead_time) %>%
+  rename(hotel_type= hotel)
+head(trimmed_df)
+
+## Unite month and year
+example_df <- bookings_df %>%
+  select(arrival_date_year, arrival_date_month) %>% 
+  unite(arrival_month_year, c("arrival_date_month", "arrival_date_year"), sep = " ")
+View(example_df)
+
+## Summary Statistics
+example_df <- bookings_df %>%
+  mutate(guests = adults + children + babies)
+head(example_df)
+
+## Summary
+example_df <- bookings_df %>%
+  summarize(number_canceled = sum(is_canceled), average_lead_time = ave(lead_time))
+head(example_df)
+Footer
+© 2022 GitHub, Inc.
+Footer navigation
+Terms
