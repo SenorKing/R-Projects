@@ -1,0 +1,88 @@
+---
+title: "Palmer Penguins"
+author: "Andre King"
+date: "2022-09-08"
+output:
+  html_document: default
+---
+
+## Setting up environment
+```{R loading Packages}
+install.packages("palmerpenguins")
+install.packages("tidyverse")
+install.packages("ggplot2")
+library(palmerpenguins)
+library(tidyverse)
+library(ggplot2)
+```
+
+## Organizing Data
+### Arrange bill length in desending order
+```{r}
+penguins2 <- penguins %>% arrange(-bill_length_mm)
+```
+### Organize by mean bill length by island
+
+```{r}
+penguins %>% group_by(island) %>% drop_na() %>%
+  summarize(mean_bill_length_mm = mean(bill_length_mm))
+```
+
+### Organize by max bill length by island
+
+```{r}
+penguins %>% group_by(island) %>% drop_na() %>%
+  summarize(max_bill_length_mm = max(bill_length_mm))
+```
+
+### Combine both code
+
+```{r}
+penguins %>% group_by(species, island) %>% drop_na() %>%
+  summarize(max_bl = max(bill_length_mm), mean_bl = mean(bill_length_mm))
+```
+
+### Filter Penguins by species
+```{r}
+penguins %>% filter(species == "Adelie")
+```
+
+### Visualize the Data using ggplot2
+```{visualize the data}
+ggplot(data=penguins)+
+  geom_point(mapping = aes(x=bill_length_mm, y=bill_depth_mm))
+
+```
+### Visualize by Flipper length vs. Body mass
+```{r}
+ggplot(data=penguins)+
+  geom_point(mapping = aes(x=flipper_length_mm, y=body_mass_g, color=species, shape= species)) +
+  geom_smooth(mapping = aes(x= flipper_length_mm, y= body_mass_g)) +
+  labs(title = "Palmer Penguins: Body Mass vs. Flipper Length", 
+       caption = "Data ollected by Dr.Kristen Gorman,") + 
+  annotate("text", x=195,y=6200, label="The Gentoo are the Largest")
+
+```
+```{r}
+Penguins_plot <- ggplot(data=penguins)+
+  geom_point(mapping = aes(x=flipper_length_mm, y=body_mass_g, color=species, shape= species)) +
+  geom_smooth(mapping = aes(x= flipper_length_mm, y= body_mass_g)) +
+  labs(title = "Palmer Penguins: Body Mass vs. Flipper Length", 
+       caption = "Data ollected by Dr.Kristen Gorman,") + 
+  annotate("text", x=195,y=6200, label="The Gentoo are the Largest")
+```
+
+```{plot data}
+plot(Penguins_plot)
+```
+
+
+
+
+
+
+
+
+
+
+
