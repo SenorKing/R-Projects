@@ -1,6 +1,5 @@
 ##Andre King
 ##Exercise 1: Diagram and test hypotheses in R
-##DATA 306
 ##02/16/2025
 ##Part 1: Following along
 		
