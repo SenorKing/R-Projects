@@ -1,6 +1,4 @@
 #Andre King
-#Data 306
-#Exercise 6: Preparation for the Final, Part 1
 
 # Load packages
 library(tidyverse)
@@ -19,7 +17,7 @@ str(trees)
 head(trees)
 
 
-## In this Assignment my goal is to explore the data more deeply finding what impacts the health of trees in nyc and if there is even an impact at all. First i will take a look at how the number of stewardship affects the health of trees in nyc then add more factors in the mix such as crime rate or problems noticed around the trees. 
+## In this project my goal is to explore the data more deeply finding what impacts the health of trees in nyc and if there is even an impact at all. First i will take a look at how the number of stewardship affects the health of trees in nyc then add more factors in the mix such as crime rate or problems noticed around the trees. 
 
 ## My hypothesis is that the more stewardship a tree receives the better the health of the tree will be. 
 
