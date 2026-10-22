@@ -1,0 +1,96 @@
+---
+title: "Final Research Report"
+author: "Andre King"
+date: "2025-12-20"
+output: pdf_document
+---
+
+```{r}
+library(tidyverse)
+library(haven)
+library(dplyr)
+library(ggplot2)
+
+
+setwd("/Users/senorking/Desktop/Fall2025/Data333") # modify as needed
+```
+
+## Import Data
+
+```{r}
+students <- read.csv("Students and Social Media.csv")
+head(students)
+```
+
+## Task 1: What is your research question?
+
+My research question is "Is higher daily social media usage associated with students’ mental health scores?"
+
+
+## Task 2: What data are you using
+
+For this task I am using the Students and Social Media dataset, which contains information on students’ demographics, social media usage patterns, sleep, academic outcomes, and mental health. The dataset was found on GitHub, where data is publicly shared for research and educational purposes.
+
+## Task 3: What is your dependent variable
+
+The dependent variable is Mental_Health_Score. This is a numerical variable that is continuous and represents students’ overall mental health levels. It is measured from 1 to 10. 1 being terrible mental wellbeing and 10 being perfect mental health. Descriptive statistics were calculated to summarize this variable, including the mean, median, and standard deviation. 
+
+```{r}
+mean(students$Mental_Health_Score, na.rm = TRUE)
+sd(students$Mental_Health_Score, na.rm = TRUE)
+median(students$Mental_Health_Score, na.rm = TRUE)
+```
+Results:
+The results show that the average students report a mental health score of about 6.23 on a 1–10 scale, indicating moderate mental well-being overall. The median score of 6 means that about half of the students have mental health scores of 6 or below. The standard deviation of 1.11 indicates medium variety, which means most students mental health scores is close to the average score or 6.23.
+
+
+## Task 4: What is your independent variable
+
+The independent variable used is Avg_Daily_Usage_Hours. This variable is numeric (continuous) and measures the average number of hours students spend on social media per day. Descriptive statistics such as mean, median, and standard deviation, were calculated for this variable. 
+
+```{r}
+mean(students$Avg_Daily_Usage_Hours, na.rm = TRUE)
+sd(students$Avg_Daily_Usage_Hours, na.rm = TRUE)
+median(students$Avg_Daily_Usage_Hours, na.rm = TRUE)
+max(students$Avg_Daily_Usage_Hours, na.rm = TRUE)
+min(students$Avg_Daily_Usage_Hours, na.rm = TRUE)
+```
+Results: 
+On average students spend about 4.92 hours per day on social media. The median of 4.8 hours means that half of the students use social media for less than about five hours daily. The standard deviation of 1.26 hours shows little variation. Daily usage has a minimum of 1.5 hours and a maximum of 8.5 hours, showing that some students may spend too much time on social media.
+
+## Task 5: Visualize the bivariate relationship 
+
+```{r}
+ggplot(students, aes(x = Avg_Daily_Usage_Hours, y = Mental_Health_Score)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(
+    x = "Average Daily Social Media Usage (Hours)",
+    y = "Mental Health Score",
+    title = "Relationship Between Social Media Usage and Mental Health" )
+
+```
+Results: 
+The scatterplot shows a negative trend, as the daily social meadia use increases, the reported mental health score deacreases. This suggest that there is a correlation between students who spend more time on social media and lower mental health scores.
+
+## Task 6: Calculate descriptive statistics of the bivariate relationship 
+
+```{r}
+cor(students$Avg_Daily_Usage_Hours, students$Mental_Health_Score, use = "complete.obs")
+```
+
+Results:
+correlation coefficient = -0.08
+The correlation coefficient says there is a strong negative relationship between average daily social media usage and mental health scores. This means that students who spend more hours per day on social media will tend to report lower mental health scores.
+
+## Task 7: Conduct a formal statistical test
+
+```{r}
+cor.test(students$Avg_Daily_Usage_Hours, students$Mental_Health_Score)
+```
+Results: 
+There is a strong negative correlation, indicating that as students spend more hours on social media, their mental health scores will likey decrease. The p-value is very small which means that this relationship is statistically significant. The confidence interval does not include 0, this further confirms a significant negative association.
+
+
+                                        Conclusion
+The research conducted shows the answer for my research question is that there is a strong negative relationship between Mental_Health_Score and Avg_Daily_Usage_Hours. this means that students who spend more time on social media tend to report worse mental health. This negative relationship is strong and statistically significant, meaning it is unlikely to be a random coincidence. 
