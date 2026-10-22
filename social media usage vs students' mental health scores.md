@@ -25,6 +25,8 @@ The report includes descriptive statistics, a scatterplot, and a Pearson correla
 The scatterplot below summarizes the relationship between social media usage and mental health score.
 
 ![Relationship Between Social Media Usage and Mental Health](./Final-Research-report.pdf)
+<img width="818" height="515" alt="phonevsgpa" src="https://github.com/user-attachments/assets/1c8119e4-2214-4541-81ae-f84e23b289d2" />
+
 
 This PDF link is provided so the report and chart can be opened directly in the repository.
 
