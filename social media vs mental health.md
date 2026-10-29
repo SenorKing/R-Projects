@@ -1,4 +1,5 @@
-# Final Research Report
+# Social media usage vs Students' mental health
+
 
 This repository contains the analysis and report for the study examining whether higher daily social media usage is associated with students' mental health scores.
 
