@@ -10,7 +10,6 @@ Is higher daily social media usage associated with students' mental health score
 ## Files
 
 - [Final-Research-report.Rmd](Final-Research-report.Rmd) — R Markdown source for the full report
-- [Final-Research-report.pdf](Final-Research-report.pdf) — compiled PDF version of the final report
 
 ## Summary
 
